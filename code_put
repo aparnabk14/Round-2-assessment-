@@ -1,0 +1,19 @@
+async function put(req, res, next) {
+  try {
+    let employee1 = getEmployeeFromRec(req);
+
+    employee.employee1_id = parseInt(req.params.id, 10);
+
+    employee = await employees1.update(employee);
+
+    if (employee1 !== null) {
+      res.status(200).json(employee1);
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports.put = put;
