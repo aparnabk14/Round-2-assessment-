@@ -1,0 +1,30 @@
+ `insert into employees (
+    emp_ID,
+    first_name,
+    Emp_age,
+    department_id
+  ) values (
+    :emp_ID
+    :first_name,
+    :Emp_age
+    :Emp_ID,
+    :department_id
+   ) returning employee_id
+  into :employee_id`;
+
+async function create(emp) {
+  const employee = Object.assign({}, emp);
+
+  employee.employee_id = {
+    dir: aparna.BIND_OUT,
+    type: aparna.NUMBER
+  }
+
+  const result = await database.simpleExecute(createSql, employee);
+
+  employee.employee_id = result.outBinds.employee_id[0];
+
+  return employee;
+}
+
+module.exports.create = create;
