@@ -1,0 +1,19 @@
+const updateSql =
+ `update employees1
+  set first_name = :first_name,
+    emp_age = :emp_age,
+   department_id = :department_id
+  where employee_id = :employee_id`;
+
+async function update(emp) {
+  const employee = Object.assign({}, emp);
+  const result = await database.simpleExecute(updateSql, employee);
+
+  if (result.rowsAffected === 1) {
+    return employee;
+  } else {
+    return null;
+  }
+}
+
+module.exports.update = update;
