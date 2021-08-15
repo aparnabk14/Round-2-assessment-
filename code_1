@@ -17,8 +17,8 @@ async function create(emp) {
   const employee = Object.assign({}, emp);
 
   employee.employee_id = {
-    dir: aparna.BIND_OUT,
-    type: aparna.NUMBER
+    dir: oracledb.BIND_OUT,
+    type: oracledb.NUMBER
   }
 
   const result = await database.simpleExecute(createSql, employee);
