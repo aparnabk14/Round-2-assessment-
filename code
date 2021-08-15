@@ -1,0 +1,24 @@
+# Employee2
+function getEmployeeFromRec(req) {
+  const employee = {
+   Emp_name: req.body.emp_name,
+    emp_age:req.body.emp_age,
+    department_id: req.body.department_id,
+  };
+
+  return employee1;
+}
+
+async function post(req, res, next) {
+  try {
+    let employee1 = getEmployeeFromRec(req);
+
+    employee1 = await employees.create(employee1);
+
+    res.status(201).json(employee1);
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports.post = post;
